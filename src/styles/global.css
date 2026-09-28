@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f5f8f6; color: #17252a; font-family: Inter, Arial, sans-serif; }
+* { box-sizing: border-box; }
+::selection { background: #8de1d0; color: #10262b; }
+.shell { width: min(100% - 40px, 1120px); margin-inline: auto; }
+.section { padding-block: 88px; scroll-margin-top: 80px; }
+.eyebrow { font: 700 11px/1.2 Consolas, monospace; text-transform: uppercase; color: #0e756d; }
+.section-title { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; font-weight: 750; }
+.subtle-grid { background-image: linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px); background-size: 44px 44px; }
+a:focus-visible,button:focus-visible { outline: 3px solid #31bfae; outline-offset: 3px; }
+@media (max-width: 640px) { .shell { width: min(100% - 32px, 1120px); } .section { padding-block: 64px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

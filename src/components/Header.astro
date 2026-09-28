@@ -1,0 +1,47 @@
+---
+import { links } from "../data/links";
+const nav = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Stack", href: "#stack" },
+];
+---
+<header class="sticky top-0 z-50 border-b border-white/10 bg-dark text-white">
+  <nav class="shell flex h-16 items-center justify-between gap-4" aria-label="Main navigation">
+    <a href="#top" class="shrink-0 text-sm font-bold tracking-normal sm:text-base">Aman Krishna Thakur<span class="text-accent">.</span></a>
+    <div class="hidden items-center gap-6 lg:flex">
+      {nav.map((item) => <a class="text-sm text-slate-300 transition hover:text-white" href={item.href}>{item.label}</a>)}
+      <a class="text-sm text-slate-300 transition hover:text-white" href={links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="text-sm text-slate-300 transition hover:text-white" href={links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+    <a class="hidden rounded bg-accent px-4 py-2 text-sm font-semibold text-dark transition hover:bg-white lg:inline-flex" href={links.github} target="_blank" rel="noopener noreferrer">View GitHub</a>
+    <button class="flex h-10 w-10 items-center justify-center rounded border border-white/25 lg:hidden" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
+      <span class="text-2xl leading-none" aria-hidden="true">≡</span>
+    </button>
+  </nav>
+  <div id="mobile-navigation" class="hidden border-t border-white/10 bg-dark lg:hidden" data-mobile-menu>
+    <div class="shell flex flex-col py-3">
+      {nav.map((item) => <a class="py-3 text-sm text-slate-200" href={item.href} data-menu-link>{item.label}</a>)}
+      <a class="py-3 text-sm text-slate-200" href={links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="py-3 text-sm text-slate-200" href={links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</header>
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>("[data-menu-button]");
+  const mobileMenu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  function closeMenu() {
+    menuButton?.setAttribute("aria-expanded", "false");
+    menuButton?.setAttribute("aria-label", "Open navigation menu");
+    mobileMenu?.classList.add("hidden");
+  }
+  menuButton?.addEventListener("click", () => {
+    const open = menuButton.getAttribute("aria-expanded") !== "true";
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    mobileMenu?.classList.toggle("hidden", !open);
+  });
+  document.querySelectorAll("[data-menu-link]").forEach((link) => link.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
+</script>
