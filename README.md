@@ -35,4 +35,4 @@ The Worker name is `aman-software-developer-portfolio`. No backend or environmen
 
 ## Content
 
-Update links in `src/data/links.ts`, projects in `src/data/projects.ts`, experience in `src/data/experience.ts`, and skills in `src/data/skills.ts`. The Complyr project describes professional experience only; proprietary source is not published. Personal projects are currently local learning projects and intentionally have no invented repository or demo links.
+Update links in `src/data/links.ts`, projects in `src/data/projects.ts`, experience in `src/data/experience.ts`, and skills in `src/data/skills.ts`. The Complyr card describes professional experience only; proprietary source is not published. Personal projects have no repository or demo links until those URLs are verified.
