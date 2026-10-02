@@ -21,20 +21,20 @@ export const featuredProject: Project = {
 
 export const personalProjects: Project[] = [
   {
+    title: "Movie Discovery & Search",
+    category: "API-powered movie browser",
+    status: "Personal Project",
+    description:
+      "Fetches popular movies from TMDB and displays poster and title cards. A search form fetches matching movies and updates the results through DOM manipulation.",
+    stack: ["HTML", "CSS", "JavaScript", "Fetch API", "DOM"],
+  },
+  {
     title: "Weather App",
     category: "API-powered interface",
     status: "Personal Project",
     description:
       "Searches for a city, fetches current weather from an external API, and updates the page with conditions or an error state.",
     stack: ["JavaScript", "HTML", "CSS", "Fetch API", "Async/Await"],
-  },
-  {
-    title: "Rock Paper Scissors",
-    category: "Browser game",
-    status: "Personal Project",
-    description:
-      "Generates computer choices, evaluates each round, and updates player and computer scores through DOM event handling.",
-    stack: ["JavaScript", "HTML", "CSS", "DOM", "Events"],
   },
   {
     title: "Dragon Repeller RPG",
@@ -47,6 +47,13 @@ export const personalProjects: Project[] = [
 ];
 
 export const moreProjects: Project[] = [
+  {
+    title: "Rock Paper Scissors",
+    category: "Browser game",
+    status: "Personal Project",
+    description: "Randomized computer choices, round evaluation, and player and computer scores updated through DOM events.",
+    stack: ["JavaScript", "HTML", "CSS", "DOM", "Events"],
+  },
   {
     title: "Stopwatch",
     category: "Timing interface",
