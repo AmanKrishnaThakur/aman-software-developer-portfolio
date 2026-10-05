@@ -13,7 +13,7 @@ export const featuredProject: Project = {
   category: "Complyr",
   status: "Professional Experience",
   description:
-    "Contributing across the stack to a production GRC fintech application using React, TypeScript, Node.js, PostgreSQL and AWS. My work spans UI development, APIs, authentication, business workflows and cloud-backed application features.",
+    "Production application work with React, TypeScript, Node.js, PostgreSQL, and AWS. I contribute to interfaces, authentication, workflows, and cloud integrations.",
   stack: ["React", "TypeScript", "JavaScript", "Node.js", "PostgreSQL", "AWS"],
   href: "#experience",
   cta: "View experience",
@@ -25,7 +25,7 @@ export const personalProjects: Project[] = [
     category: "API-powered movie browser",
     status: "Personal Project",
     description:
-      "Fetches popular movies from TMDB and displays poster and title cards. A search form fetches matching movies and updates the results through DOM manipulation.",
+      "A movie browser that fetches popular titles and search results from TMDB, then builds poster and title cards in the page.",
     stack: ["HTML", "CSS", "JavaScript", "Fetch API", "DOM"],
   },
   {
@@ -33,7 +33,7 @@ export const personalProjects: Project[] = [
     category: "API-powered interface",
     status: "Personal Project",
     description:
-      "Searches for a city, fetches current weather from an external API, and updates the page with conditions or an error state.",
+      "Search a city to see current conditions. Uses asynchronous requests to display weather results or an error state.",
     stack: ["JavaScript", "HTML", "CSS", "Fetch API", "Async/Await"],
   },
   {
@@ -41,7 +41,7 @@ export const personalProjects: Project[] = [
     category: "Interactive game",
     status: "In Progress",
     description:
-      "A browser RPG exploring location changes, inventory, combat, upgrades, and player progression through JavaScript state.",
+      "A browser RPG with location changes, inventory, combat, and upgrades managed through JavaScript state.",
     stack: ["JavaScript", "HTML", "CSS", "State Management"],
   },
 ];

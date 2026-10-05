@@ -1,48 +1,65 @@
 ---
+import { CodeXml, Menu, X } from "@lucide/astro";
 import { links } from "../data/links";
 const nav = [
-  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Stack", href: "#stack" },
+  { label: "About", href: "#about" },
   { label: "Resume", href: "#resume" },
+  { label: "Contact", href: "#contact" },
 ];
 ---
-<header class="sticky top-0 z-50 border-b border-white/10 bg-dark text-white">
-  <nav class="shell flex h-16 items-center justify-between gap-4" aria-label="Main navigation">
-    <a href="#top" class="shrink-0 text-sm font-bold tracking-normal sm:text-base">Aman Krishna Thakur<span class="text-accent">.</span></a>
-    <div class="hidden items-center gap-6 lg:flex">
-      {nav.map((item) => <a class="text-sm text-slate-300 transition hover:text-white" href={item.href}>{item.label}</a>)}
-      <a class="text-sm text-slate-300 transition hover:text-white" href={links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a class="text-sm text-slate-300 transition hover:text-white" href={links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<header class="site-header">
+  <nav class="shell nav-shell" aria-label="Main navigation">
+    <a href="#top" class="brand">Aman Krishna Thakur<span>.</span></a>
+    <div class="desktop-nav">{nav.map((item) => <a href={item.href} data-section-link>{item.label}</a>)}</div>
+    <div class="nav-actions">
+      <a class="icon-button" href={links.github} target="_blank" rel="noopener noreferrer" title="GitHub profile" aria-label="GitHub profile"><CodeXml size={17} strokeWidth={1.6} /></a>
+      <button class="icon-button menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
+        <span data-menu-open><Menu size={19} strokeWidth={1.6} /></span>
+        <span class="hidden" data-menu-close><X size={19} strokeWidth={1.6} /></span>
+      </button>
     </div>
-    <a class="hidden rounded bg-accent px-4 py-2 text-sm font-semibold text-dark transition hover:bg-white lg:inline-flex" href={links.github} target="_blank" rel="noopener noreferrer">View GitHub</a>
-    <button class="flex h-10 w-10 items-center justify-center rounded border border-white/25 lg:hidden" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
-      <span class="text-2xl leading-none" aria-hidden="true">≡</span>
-    </button>
   </nav>
-  <div id="mobile-navigation" class="hidden border-t border-white/10 bg-dark lg:hidden" data-mobile-menu>
-    <div class="shell flex flex-col py-3">
-      {nav.map((item) => <a class="py-3 text-sm text-slate-200" href={item.href} data-menu-link>{item.label}</a>)}
-      <a class="py-3 text-sm text-slate-200" href={links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a class="py-3 text-sm text-slate-200" href={links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <div id="mobile-navigation" class="mobile-nav hidden" data-mobile-menu>
+    <div class="shell">
+      {nav.map((item) => <a href={item.href} data-menu-link data-section-link>{item.label}</a>)}
+      <a href={links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </div>
 </header>
 <script>
-  const menuButton = document.querySelector<HTMLButtonElement>("[data-menu-button]");
-  const mobileMenu = document.querySelector<HTMLElement>("[data-mobile-menu]");
-  function closeMenu() {
-    menuButton?.setAttribute("aria-expanded", "false");
-    menuButton?.setAttribute("aria-label", "Open navigation menu");
-    mobileMenu?.classList.add("hidden");
+  const button = document.querySelector<HTMLButtonElement>("[data-menu-button]");
+  const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  const openIcon = document.querySelector("[data-menu-open]");
+  const closeIcon = document.querySelector("[data-menu-close]");
+  function setMenu(open: boolean) {
+    button?.setAttribute("aria-expanded", String(open));
+    button?.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    menu?.classList.toggle("hidden", !open);
+    openIcon?.classList.toggle("hidden", open);
+    closeIcon?.classList.toggle("hidden", !open);
   }
-  menuButton?.addEventListener("click", () => {
-    const open = menuButton.getAttribute("aria-expanded") !== "true";
-    menuButton.setAttribute("aria-expanded", String(open));
-    menuButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
-    mobileMenu?.classList.toggle("hidden", !open);
-  });
-  document.querySelectorAll("[data-menu-link]").forEach((link) => link.addEventListener("click", closeMenu));
-  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
+  button?.addEventListener("click", () => setMenu(button.getAttribute("aria-expanded") !== "true"));
+  document.querySelectorAll("[data-menu-link]").forEach((link) => link.addEventListener("click", () => setMenu(false)));
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") setMenu(false); });
+  window.matchMedia("(min-width: 1024px)").addEventListener("change", (event) => { if (event.matches) setMenu(false); });
+  const sectionLinks = document.querySelectorAll<HTMLAnchorElement>("[data-section-link]");
+  let scheduled = false;
+  function updateActiveSection() {
+    let active = "";
+    document.querySelectorAll<HTMLElement>("main section[id]").forEach((section) => {
+      if (section.getBoundingClientRect().top <= 160) active = `#${section.id}`;
+    });
+    sectionLinks.forEach((link) => {
+      if (link.getAttribute("href") === active) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+    scheduled = false;
+  }
+  window.addEventListener("scroll", () => {
+    if (!scheduled) { scheduled = true; window.requestAnimationFrame(updateActiveSection); }
+  }, { passive: true });
+  updateActiveSection();
 </script>

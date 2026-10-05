@@ -1,18 +1,19 @@
 ---
+import { Image } from "astro:assets";
+import portrait from "../assets/aman-portrait.jpg";
 ---
-<section id="about" class="section border-b border-line bg-paper">
-  <div class="shell grid items-start gap-10 md:grid-cols-[0.75fr_1.25fr]">
+<section id="about" class="section">
+  <div class="shell section-layout">
+    <div class="section-head"><p class="eyebrow"><span class="index">04 //</span> About</p><h2>Background & approach.</h2></div>
     <div>
-      <p class="eyebrow">04 / About</p>
-      <h2 class="section-title mt-3">A little about me</h2>
-      <img src="/images/aman-portrait.jpg" alt="Portrait of Aman Krishna Thakur" class="mt-7 h-56 w-56 rounded object-cover object-top" loading="lazy" />
-    </div>
-    <div class="space-y-5 text-base leading-7 text-muted">
-      <p>I graduated from Chandigarh University in June 2024 with a B.Sc. in Computer Science, Statistics and Mathematics. I now develop production software at Complyr and am interested in frontend, full stack, and product engineering roles.</p>
-      <div class="border-l-2 border-teal pl-5">
-        <h3 class="font-bold text-ink">Modern development workflow</h3>
-        <p class="mt-2">I use AI coding tools for codebase exploration, implementation support, debugging, research and documentation. I review and validate generated code and rely on engineering fundamentals to understand the changes I ship.</p>
+      <div class="about-content">
+        <Image src={portrait} alt="Portrait of Aman Krishna Thakur" widths={[240, 480]} sizes="170px" width={240} height={275} class="portrait" loading="lazy" />
+        <div class="copy">
+          <p>I graduated from Chandigarh University in June 2024 with a B.Sc. in Computer Science, Statistics and Mathematics.</p>
+          <p>Today, I develop production software at Complyr. I'm interested in building useful products and continuing to grow across the stack.</p>
+        </div>
       </div>
+      <div class="workflow"><h3>How I work</h3><p class="copy">I use AI coding tools to explore codebases, support implementation, and debug changes. I review and validate generated code, and take responsibility for what I ship.</p></div>
     </div>
   </div>
 </section>

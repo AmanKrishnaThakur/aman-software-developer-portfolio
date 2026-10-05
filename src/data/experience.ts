@@ -5,10 +5,10 @@ export const experience = [
     period: "Oct 2025 - Present",
     location: "GRC / compliance fintech",
     highlights: [
-      "Build and maintain production application features across frontend, backend, database, and cloud layers.",
-      "Work with React, TypeScript, JavaScript, Node.js, PostgreSQL, and AWS in a shared codebase.",
-      "Develop interfaces, APIs, authentication and authorization flows, and business workflows.",
-      "Debug and maintain cloud-backed application features and integrations using Git-based workflows.",
+      "Build and maintain features across the interface, APIs, database, and cloud services.",
+      "Work in a shared React and TypeScript codebase, with Node.js, PostgreSQL, and AWS.",
+      "Develop interfaces, authentication and authorization flows, and business workflows.",
+      "Debug application issues and maintain integrations using Git for review and collaboration.",
     ],
   },
 ];

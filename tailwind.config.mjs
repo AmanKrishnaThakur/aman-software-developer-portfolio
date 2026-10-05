@@ -13,8 +13,8 @@ export default {
         accent: "#8de1d0",
       },
       fontFamily: {
-        sans: ["Inter", "Arial", "sans-serif"],
-        mono: ["Consolas", "monospace"],
+        sans: ["Geist Variable", "Arial", "sans-serif"],
+        mono: ["Geist Mono Variable", "monospace"],
       },
     },
   },

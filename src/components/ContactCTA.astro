@@ -1,17 +1,18 @@
 ---
+import { ArrowUpRight, CodeXml, Mail } from "@lucide/astro";
 import { links } from "../data/links";
 ---
-<section id="contact" class="section bg-dark text-white">
-  <div class="shell flex flex-col justify-between gap-8 md:flex-row md:items-end">
-    <div>
-      <p class="font-mono text-xs font-bold uppercase text-accent">06 / Contact</p>
-      <h2 class="mt-3 max-w-xl text-[clamp(30px,3.6vw,44px)] font-bold leading-tight">Let's talk about building useful software.</h2>
-      <p class="mt-4 max-w-xl text-slate-300">Open to junior software engineering opportunities, including remote roles.</p>
-    </div>
-    <div class="flex shrink-0 flex-wrap gap-3">
-      <a href={links.email} class="rounded bg-accent px-5 py-3 text-sm font-bold text-dark hover:bg-white">Email me</a>
-      <a href={links.linkedin} target="_blank" rel="noopener noreferrer" class="rounded border border-white/30 px-5 py-3 text-sm font-bold text-white hover:border-white">LinkedIn</a>
-      <a href={links.github} target="_blank" rel="noopener noreferrer" class="rounded border border-white/30 px-5 py-3 text-sm font-bold text-white hover:border-white">GitHub</a>
+<section id="contact" class="section">
+  <div class="shell section-layout">
+    <div class="section-head"><p class="eyebrow"><span class="index">06 //</span> Contact</p><h2>Let's connect.</h2></div>
+    <div class="contact-content">
+      <h3>Let's build something useful.</h3>
+      <p class="copy">I'm open to junior software engineering opportunities, including remote roles.</p>
+      <div class="actions">
+        <a href={links.email} class="button button-primary"><Mail size={16} /> Email me</a>
+        <a href={links.linkedin} target="_blank" rel="noopener noreferrer" class="button">LinkedIn <ArrowUpRight size={16} /></a>
+        <a href={links.github} target="_blank" rel="noopener noreferrer" class="button"><CodeXml size={16} /> GitHub</a>
+      </div>
     </div>
   </div>
 </section>

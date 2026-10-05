@@ -1,16 +1,16 @@
 ---
+import { ArrowUpRight, Download } from "@lucide/astro";
 import { links } from "../data/links";
 ---
-<section id="resume" class="section border-b border-line bg-white">
-  <div class="shell flex flex-col justify-between gap-6 md:flex-row md:items-center">
-    <div class="max-w-2xl">
-      <p class="eyebrow">05 / Resume</p>
-      <h2 class="section-title mt-3">Experience at a glance</h2>
-      <p class="mt-4 text-muted">My software development experience, frontend and full stack skills, selected projects, and education.</p>
-    </div>
-    <div class="flex shrink-0 flex-wrap gap-3">
-      <a href={links.resume} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center rounded border border-teal px-5 py-3 text-sm font-semibold text-teal hover:bg-paper">View resume</a>
-      <a href={links.resume} download="Aman-Krishna-Thakur-Resume.pdf" class="inline-flex min-h-11 items-center rounded bg-teal px-5 py-3 text-sm font-semibold text-white hover:bg-dark">Download PDF</a>
+<section id="resume" class="section">
+  <div class="shell section-layout">
+    <div class="section-head"><p class="eyebrow"><span class="index">05 //</span> Resume</p><h2>Experience at a glance.</h2></div>
+    <div class="resume-content">
+      <p class="copy">Experience, selected projects,<br />and education in one place.</p>
+      <div class="actions">
+        <a href={links.resume} target="_blank" rel="noopener noreferrer" class="button">View resume <ArrowUpRight size={16} /></a>
+        <a href={links.resume} download="Aman-Krishna-Thakur-Resume.pdf" class="button button-primary"><Download size={16} /> Download PDF</a>
+      </div>
     </div>
   </div>
 </section>

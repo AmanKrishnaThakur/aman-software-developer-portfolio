@@ -1,51 +1,41 @@
 ---
+import { ArrowUpRight, Clapperboard, CloudSun, Gamepad2 } from "@lucide/astro";
 import { featuredProject, personalProjects, moreProjects } from "../data/projects";
+const projectIcons = [Clapperboard, CloudSun, Gamepad2];
 ---
-<section id="projects" class="section border-b border-line bg-paper">
+<section id="projects" class="section work-section">
   <div class="shell">
-    <p class="eyebrow">02 / Selected work</p>
-    <h2 class="section-title mt-3">Projects & engineering work</h2>
-    <p class="mt-4 max-w-2xl text-muted">Production experience and selected personal projects.</p>
-
-    <article class="mt-9 rounded border border-line bg-white p-6 sm:p-8">
-      <p class="font-mono text-xs font-bold uppercase text-teal">{featuredProject.status} / {featuredProject.category}</p>
-      <h3 class="mt-3 text-2xl font-bold text-ink">{featuredProject.title}</h3>
-      <p class="mt-4 max-w-3xl text-sm leading-7 text-muted">{featuredProject.description}</p>
-      <div class="mt-5 flex flex-wrap gap-2">{featuredProject.stack.map((item) => <span class="rounded bg-paper px-2.5 py-1 font-mono text-xs text-ink">{item}</span>)}</div>
-      <a href={featuredProject.href} class="mt-6 inline-flex text-sm font-bold text-teal hover:underline">{featuredProject.cta} <span class="ml-2" aria-hidden="true">→</span></a>
-    </article>
-
-    <div class="mt-12">
-      <h3 class="text-xl font-bold text-ink">Featured projects</h3>
-      <p class="mt-2 text-sm text-muted">JavaScript projects built while strengthening browser, DOM and application-logic fundamentals.</p>
+    <div class="section-head">
+      <div><p class="eyebrow"><span class="index">02 //</span> Selected work</p><h2>Selected projects.</h2></div>
+      <p class="copy">Production work, followed by personal projects<br class="hidden md:block" /> in JavaScript and the browser.</p>
     </div>
-    <div class="mt-5 grid gap-4 md:grid-cols-3">
-      {personalProjects.map((project, index) => (
-        <article class="flex min-h-[270px] flex-col rounded border border-line bg-white p-6">
-          <div class="mb-6 flex flex-wrap items-start justify-between gap-2">
-            <span class="font-mono text-xs text-teal">0{index + 1} / {project.category}</span>
-            <span class="text-xs text-muted">{project.status}</span>
-          </div>
-          <h4 class="text-lg font-bold text-ink">{project.title}</h4>
-          <p class="mt-3 flex-1 text-sm leading-6 text-muted">{project.description}</p>
-          <div class="mt-6 flex flex-wrap gap-2">{project.stack.map((item) => <span class="rounded bg-paper px-2 py-1 font-mono text-[11px] text-ink">{item}</span>)}</div>
-        </article>
-      ))}
-    </div>
-
-    <div class="mt-12">
-      <h3 class="text-xl font-bold text-ink">More JavaScript projects</h3>
-      <div class="mt-5 grid gap-x-8 md:grid-cols-2">
-        {moreProjects.map((project) => (
-          <article class="border-t border-line py-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h4 class="font-bold text-ink">{project.title}</h4>
-              <span class="font-mono text-[11px] text-teal">{project.category}</span>
-            </div>
-            <p class="mt-2 text-sm leading-6 text-muted">{project.description}</p>
-          </article>
-        ))}
+    <article class="professional-work">
+      <div>
+        <p class="eyebrow">{featuredProject.status} / Complyr</p>
+        <h3>{featuredProject.title}</h3>
+        <p class="copy">{featuredProject.description}</p>
+        <div class="tags">{featuredProject.stack.map((item) => <span>{item}</span>)}</div>
       </div>
+      <a href={featuredProject.href} class="text-link">{featuredProject.cta} <ArrowUpRight size={15} /></a>
+    </article>
+    <div class="project-grid">
+      {personalProjects.map((project, index) => {
+        const Icon = projectIcons[index];
+        return (
+          <article class="project-card">
+            <div class="project-card-top"><Icon size={25} strokeWidth={1.4} /><span>{String(index + 1).padStart(2, "0")}</span></div>
+            <p class="project-category">{project.category}</p>
+            <h4>{project.title}</h4>
+            <p class="copy">{project.description}</p>
+            <div class="tags">{project.stack.map((item) => <span>{item}</span>)}</div>
+            <p class="project-state"><span class:list={["status-square", { "status-progress": project.status === "In Progress" }]} aria-hidden="true"></span>{project.status}</p>
+          </article>
+        );
+      })}
+    </div>
+    <h3 class="secondary-title">More JavaScript projects</h3>
+    <div class="secondary-grid">
+      {moreProjects.map((project) => <article class="secondary-project"><h4>{project.title}</h4><p class="copy">{project.description}</p></article>)}
     </div>
   </div>
 </section>

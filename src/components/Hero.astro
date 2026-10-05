@@ -1,18 +1,26 @@
 ---
+import { ArrowDown, ArrowUpRight, FileText } from "@lucide/astro";
+import { Image } from "astro:assets";
+import portrait from "../assets/aman-portrait.jpg";
 import { links } from "../data/links";
 ---
-<section id="top" class="relative isolate overflow-hidden bg-dark text-white">
-  <div class="subtle-grid absolute inset-0 -z-10"></div>
-  <img src="/images/aman-portrait.jpg" alt="" class="absolute inset-y-0 right-0 -z-10 hidden h-full w-1/2 object-cover object-top opacity-45 [mask-image:linear-gradient(to_right,transparent,black_38%)] md:block" />
-  <div class="shell relative flex min-h-[510px] flex-col justify-center py-16 sm:min-h-[550px]">
-    <p class="mb-5 flex items-center gap-2 text-xs font-semibold uppercase text-accent"><span class="h-2 w-2 rounded-full bg-accent"></span> Available for junior software engineering roles</p>
-    <p class="mb-4 font-mono text-sm text-accent">HTML / CSS / JavaScript / React / Node.js</p>
-    <h1 class="max-w-[760px] text-[clamp(39px,5.5vw,68px)] font-bold leading-[1.08]">Building production web applications across the stack.</h1>
-    <p class="mt-6 max-w-[630px] text-base leading-7 text-slate-300 sm:text-lg">I'm Aman Krishna Thakur, a Full Stack Developer Intern working on a production GRC fintech application. I build with HTML, CSS, JavaScript, React and TypeScript on the frontend, alongside Node.js, PostgreSQL and AWS on the backend.</p>
-    <div class="mt-9 flex flex-wrap items-center gap-3">
-      <a href="#projects" class="inline-flex min-h-11 items-center rounded bg-accent px-5 py-3 text-sm font-semibold text-dark transition hover:bg-white">View Projects <span class="ml-3" aria-hidden="true">→</span></a>
-      <a href={links.github} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center rounded border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:border-white">GitHub</a>
-      <a href={links.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center rounded border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:border-white">LinkedIn</a>
+<section id="top" class="hero">
+  <div class="shell hero-content">
+    <Image src={portrait} alt="Portrait of Aman Krishna Thakur" widths={[280, 560]} sizes="(max-width: 767px) 88px, (max-width: 1023px) 200px, 280px" width={280} height={350} class="hero-portrait" loading="eager" fetchpriority="high" />
+    <div class="hero-status"><span class="status-square" aria-hidden="true"></span> Open to junior engineering roles</div>
+    <p class="hero-kicker">Full Stack Developer / Complyr</p>
+    <h1>Aman Krishna <span>Thakur.</span></h1>
+    <p class="hero-intro">Building production web applications,<br />from interface to API.</p>
+    <p class="hero-summary">I'm a Full Stack Developer Intern at Complyr. I work across React interfaces, TypeScript application logic, APIs, and cloud services for a GRC fintech application.</p>
+    <div class="actions">
+      <a href="#projects" class="button button-primary">Explore selected work <ArrowDown size={16} strokeWidth={1.6} /></a>
+      <a href={links.resume} target="_blank" rel="noopener noreferrer" class="button"><FileText size={16} strokeWidth={1.6} /> Resume</a>
+      <a href={links.linkedin} target="_blank" rel="noopener noreferrer" class="button">LinkedIn <ArrowUpRight size={16} strokeWidth={1.6} /></a>
     </div>
+    <dl class="hero-meta">
+      <div><dt>Current work</dt><dd>Complyr / Oct 2025 - Present</dd></div>
+      <div><dt>Core stack</dt><dd>React, TypeScript, Node.js, PostgreSQL</dd></div>
+      <div><dt>Education</dt><dd>B.Sc. / Chandigarh University</dd></div>
+    </dl>
   </div>
 </section>
